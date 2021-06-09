@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 *{
   margin: 0;
   padding: 0;
@@ -13,10 +14,12 @@ html,body{
 
 header .navigation {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row-reverse;
+  /* justify-content: space-between; */
   align-items: center;
-  position: fixed;
-  min-height: 12vh;
+  /* position: fixed; */
+  position: relative;
+  min-height: 9vh;
   min-width: 100%;
   z-index: 10;
   background: #0f1423;
@@ -24,6 +27,7 @@ header .navigation {
 }
 
 header .navigation .logo{
+  position: absolute;
   margin-left: 20px;
 }
 
@@ -38,8 +42,9 @@ header .navigation .menu-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 45%;
+  width: 30%;
   margin: auto 20px auto 0;
+  margin-right: 2.5rem;
 }
 
 header .navigation .humbarger {
@@ -55,6 +60,7 @@ header .navigation .humbarger .bar{
  }
 
 header .navigation .menu-list li a {
+  position: relative;
   color: #b1d4e0;
   font-size: 1.8rem;
   letter-spacing: 2px;
@@ -180,22 +186,23 @@ header .navigation .menu-list li a {
 .intro-section .intro-content .header-btn a:before{
 	position: absolute;
   content: ""; 
-  top: 0px;
-  height: 100%;
-  left: -25%;
+  top: -20px;
+  height: 300%;
+  left: -100%;
   width: 0%;
   background-color: #3498db;
-  transform: skew(50deg);
+  transform: skew(30deg);
   transition-duration: 1s;
   z-index: 1;
 }
 
-.intro-section .intro-content .header-btn a:hover{
+
+.intro-section .intro-content .header-btn a:hover {
   color: #b1d4e0;
 }
 
 .intro-section .intro-content .header-btn a:hover:before{
-  width: 170%;
+  width: 300%;
 
 }
 
@@ -206,20 +213,7 @@ header .navigation .menu-list li a {
 
 /* ====================
   Responsive Section
-=======================*/
-
-/* Tablet desktop :768px. */
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  header .navigation .menu-list {
-    width: 60%;
-  }
-
-  header .navigation .menu-list li a{
-    font-size: 1rem;
-  }
-
-}
+=======================*/ 
 
 /* Large Mobile :480px. */
 
@@ -232,12 +226,17 @@ header .navigation .menu-list li a {
     background: rgba(15, 20, 35, 0.99);
     text-align: center;
     display: none;
+    margin-right: 0 ;
   }
-
   header .navigation .menu-list li {
     display: block;
   }
-
+  .seco_nav{
+    display: none !important;
+  }
+  .logo{
+    top: 0 !important;
+  }
   header .navigation .menu-list li a {
     display: block;
     padding: 20px;
@@ -268,7 +267,7 @@ header .navigation .menu-list li a {
     font-size: 1.5rem;
   }
 
-  .intro-section .intro-content .header-btn a{
+  .intro-section .intro-content .header-btn a ,#login_btn {
     font-size: 1.25rem;
   }
 
@@ -290,3 +289,79 @@ header .navigation .menu-list li a {
 
 }
     
+
+/*******************************************************/
+/* my work */
+/*******************************************************/
+.seco_nav{
+  height: 9vh;
+  background-color: #0f1423;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.logo{
+  top: -36px;
+  left: 0;
+}
+
+#login_btn{
+  font-family: roboto;
+  font-weight: 700;
+  border: none;
+  text-decoration: none;
+  position: relative;
+  color: #0f1423;
+  background-color: #b1d4e0 ;
+  padding-top: 1rem;
+  margin-right: 2.5rem;
+  padding-left: 2rem;
+
+  padding-right: 2rem;
+  margin-top: 2rem;
+  padding-bottom: 8px;
+  font-size: 1.8rem;
+  border-radius: 7px;
+  overflow: hidden;
+  transition: 0.5s;
+  /* text-transform: uppercase; */
+}
+#login_btn::before{
+  position: absolute;
+  content: '';
+  height: 100%;
+  width: 0%;
+  background-color:#3498db ;
+  top: 0;
+  left: -15px;
+  transform: skew(30deg);
+  transition: 0.5s;
+}
+#login_btn:hover::before{
+  width: 200%;
+}
+#write{
+  position: relative;
+  z-index: 10;
+}
+
+#login_btn:hover{
+  /* background: #3498db; */
+  color:#b1d4e0 ;
+}
+
+header .navigation .menu-list li a:before{
+  position: absolute;
+  content: '';
+  height: 2px;
+  width:0%;
+  bottom: -8px;
+  left: 0;
+  background-color: #b1d4e0;
+  transition: 0.5s;
+}
+header .navigation .menu-list li a:hover:before{
+  width: 100%;
+}
+/**************************/
+
