@@ -1,0 +1,15 @@
+.container1{
+    height: 80vh;
+    width: 55vw;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items:baseline;
+    padding: 20px;
+    overflow: hidden;
+    
+}
+.carousel img{
+    height:70vh ;
+    width: 100%;
+}

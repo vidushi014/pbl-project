@@ -22,6 +22,7 @@ header .navigation {
   min-height: 9vh;
   min-width: 100%;
   z-index: 10;
+  margin-bottom: 35px;
   background: #0f1423;
   border-bottom: 2px solid #0c2d48;
 }
@@ -74,10 +75,12 @@ header .navigation .menu-list li a {
   Intro Section
 =======================*/
 .intro-section {
-  height: 100vh;
+  height: 85vh;
   position: relative;
-  background: rgba(15, 20, 35, 0.9);
+  /* background: rgba(114, 128, 170, 0.9); */
+  /* background: linear-gradient(to bottom, rgb(247, 239, 239) , rgb(63, 63, 90)); */
 }
+/* rgba(15, 20, 35, 0.9); */
 
 .intro-section .intro-content {
   display: flex;
@@ -87,55 +90,88 @@ header .navigation .menu-list li a {
   position: absolute;
   width: 100%;
   height: 100%;
-  left: 0;
-  top: 0;
+  text-align: center;
+  left: 25%;
+  top: -10%;
 }
 
 .intro-section .intro-content h1 {
-  color: #b1d4e0;
-  font-size: 5rem;
-  letter-spacing: -1px;
-  text-transform: uppercase;
-  margin-top: 80px;
+  color: #0f1423;
+  font-size: 10rem;
+  letter-spacing: 5px;
+  position: relative;
+  /* left: 25%; */
+  /* text-transform: uppercase; */
+  /* top: -20%; */
+  /* margin-top: 80px; */
+  font-weight: bolder;
 }
 
 .intro-section .intro-content h6{
   margin-top: 5px;
-  color: #b1d4e0;
-  font-size: 2.5rem;
+  color: #e64a1b;
+  font-size: 3.5rem;
   font-weight: 300;
+  position: relative;
+  left: 16%;
+  /* text-transform: uppercase; */
+  /* top: -20%; */
 }
-
+ .intro-section .intro-content .para{
+  display: flex;
+  align-items: center;
+  text-align:center;
+  height: 182px;
+  width: 483px;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #0f1423;
+}/*
 .intro-section .intro-content p {
-  margin-top: 40px;
-  color: #b1d4e0;
-}
+  /* margin-top: 40px; */
+ /* color: #b1d4e0;
+  position: relative;
+  left: 25%;
+  top: -30%;
+} */
 
 .intro-content .tagline {
-  margin-top:80px;
+  /* margin-top:80px; */
+  display:flex;
+  flex-direction: column;
+  /* align-items: center;
+  position: relative;
+  left: 25%;
+  top: -20%; */
 }
+
 
 .intro-section .intro-content .tagline .change-container{
 	position: relative;
-  display: inline-block;
+  display: flex;
   width: 560px;
   margin-bottom: 55px;
 	margin-top: 30px;
+  left: 25%;
+  top: 15%;
+  
 }
 
 .intro-section .intro-content .changing {
 	position: absolute;
 	overflow: hidden;
   width: 100%;
-  left:0;
+  left:-120px;
   bottom:0;
   height:0;
   opacity:0;
-  color: #b1d4e0;
+  /* color: #b1d4e0; */
+  color: red;
   text-transform: uppercase;
   word-spacing: 5px;
 	text-align: center;
 	font-size: 2.5rem;
+  
 }
 
 .changing:nth-child(1) {
@@ -173,11 +209,12 @@ header .navigation .menu-list li a {
 .intro-section .intro-content .header-btn a{
   text-decoration: none;
   font-size: 1.5rem;
-  color: #3498db;
+  color: #0f1423;
   background-color: #b1d4e0;
   padding: 15px;
   border-radius: 5px;
   display: inline-block;
+  font-weight: bold;
   position: relative;
   overflow: hidden;
   text-transform: uppercase;
@@ -271,6 +308,7 @@ header .navigation .menu-list li a {
     font-size: 1.25rem;
   }
 
+
 }
 
 
@@ -321,7 +359,7 @@ header .navigation .menu-list li a {
   margin-top: 2rem;
   padding-bottom: 8px;
   font-size: 1.8rem;
-  border-radius: 7px;
+  border-radius: 50px;
   overflow: hidden;
   transition: 0.5s;
   /* text-transform: uppercase; */
