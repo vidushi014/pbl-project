@@ -205,8 +205,8 @@ header .navigation .menu-list li a {
   }
   
 }
-
-.intro-section .intro-content .header-btn a{
+/* .intro-section .intro-content */
+ .header-btn a{
   text-decoration: none;
   font-size: 1.5rem;
   color: #0f1423;
@@ -220,7 +220,7 @@ header .navigation .menu-list li a {
   text-transform: uppercase;
 }
 
-.intro-section .intro-content .header-btn a:before{
+ .header-btn a:before{
 	position: absolute;
   content: ""; 
   top: -20px;
@@ -234,16 +234,16 @@ header .navigation .menu-list li a {
 }
 
 
-.intro-section .intro-content .header-btn a:hover {
+ .header-btn a:hover {
   color: #b1d4e0;
 }
 
-.intro-section .intro-content .header-btn a:hover:before{
+.header-btn a:hover:before{
   width: 300%;
 
 }
 
-.intro-section .intro-content .header-btn a span{
+ .header-btn a span{
 	position: relative;
 	z-index: 9;
 }
