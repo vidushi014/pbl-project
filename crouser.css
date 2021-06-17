@@ -5,11 +5,11 @@
     display: flex;
     justify-content: center;
     align-items:baseline;
-    padding: 20px;
+    padding: 0;
     overflow: hidden;
     
 }
 .carousel img{
-    height:70vh ;
+    height:85vh ;
     width: 100%;
 }
