@@ -2,9 +2,14 @@
     padding: 0;
     margin: 0;
 }
+.portal{
+    margin-top: 8rem ;
+}
 .sec{
     height:500px;
     display: flex;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
 }
 .image{
     width: 50%;
@@ -16,13 +21,22 @@
     width: 50%;
     background-color:white;
     box-sizing: border-box;
-    padding-left: 7rem;
+    padding-left: 12rem;
     text-align: left;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 5rem;
+    background: rgb(236, 236, 236);
+}
+.content h1{
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
 }
 #content2{
     text-align: right;
     padding-right: 7rem;
+    
 }
 #img1{
     /* background-image:url("./1.jpg"); */
@@ -36,4 +50,12 @@
 #img3{
     /* background-image:url("./4.jpg"); */
     object-fit: cover;
+}
+#port2{
+    margin-right: 50%;
+    margin-top: 7%;
+}
+#port1{
+    margin-left: 40%;
+    margin-top: 7%;
 }
