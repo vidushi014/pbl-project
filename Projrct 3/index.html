@@ -4,26 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="form.css">
     <title>Portals</title>
 </head>
 <body>
-    <form action="page.html">
-        
-        <h2>Details</h2>
-        <p>Name: * <input type="text" name="name" id="name" placeholder="Your Name" ></p>
+   <div class="header">
+
+   </div>
+    <form action="page.html" id="formstyle" >
+        <div id="gradient"></div>
+        <div id="shadow"></div>
+        <div id="details">
+        <h2 align ="center">Details</h2><br>
+        <p>Name: * <input type="text" name="name" id="name" placeholder="Your Name" ></p><br>
         <fieldset>
             <legend>What you are *</legend>
          <p>
             Hospital <input type="radio" name="category" id="Hospital"  >
             NGO/Social Worker <input type="radio" name="category" id="Others">
         </p>
-    </fieldset>
+    </fieldset><br>
     <!-- <p>Email : *<input type="email" name="email" id="email" required> </p> -->
-    <p>Phone Number : <input type="number" name="phonenumber" id="phonenumber"> </p>
-    <p>Pincode :* <input type="number" name="pincode" id="pincode" ></p>
-    <p>Adress : * <textarea name="Address" id="Address" cols="100" rows="8" ></textarea> </p>
+    <p>Phone Number : <input type="number" name="phonenumber" id="phonenumber"> </p><br>
+    <p>Pincode :* <input type="number" name="pincode" id="pincode" ></p><br>
+    <p>Adress : *<br> <textarea name="Address" id="Address" cols="93" rows="8" ></textarea> </p><br>
     <hr>
-    <h2>How You wish to help</h2>
+    <h2 align="center">How You wish to help</h2><br>
     <!-- <p>Availability :*
         <select name="availability" id="availability" required>
             <option value="">--Select a Significant Availability--</option>
@@ -57,16 +63,20 @@
         Yes <input type="radio" name="meal" id="yes"  >
         No <input type="radio" name="meal" id="no">
     </p> -->
-    <h5>please enter data in the formate :</h5>
-    <p>Oxygen Tanks = 4(qnty) </p>
-    <p>Ventilators = 9(qnty) </p>
-    <p>Meals = Yes (twice a day) </p>
-    <p>Funds = 12000Rs </p>
+    <h5>please enter data in the formate :</h5><br>
+    <p>Oxygen Tanks = 4(qnty) </p><br>
+    <p>Ventilators = 9(qnty) </p><br>
+    <p>Meals = Yes (twice a day) </p><br>
+    <p>Funds = 12000Rs </p><br>
     <p> Helps : 
-         <textarea name="help" id="help" cols="25" rows="4" ></textarea> </p>
+        <br>
+         <textarea name="help" id="help" cols="93" rows="4" ></textarea> </p><br>
 
     <button id="addBtn" >Submit</button>
+    </div>
+    
     </form>
+    
 
  <script src="./app.js"></script>
 </body>
