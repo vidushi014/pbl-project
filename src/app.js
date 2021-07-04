@@ -4,9 +4,11 @@ require("./db/conn");
 const path = require("path");
 const port = process.env.PORT || 3000;
 const hbs = require('hbs');
-const contact = require('./models/contact');
-var contact_find = contact.find({});
+// const contact = require('./models/contact');
+// var contact_find = contact.find({});
 const user = require('./models/user');
+const main = require('./models/main');
+const main_find = main.find({});
 // var user_find = user.find({});
 
 
@@ -37,13 +39,19 @@ app.get("/helper", (req, res) => {
 //for social service portal 
 app.post("/helper", async (req, res) => {
     try {
-        const contacting = new contact({
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            country: req.body.country,
-            subject: req.body.subject
+        const main_saving = new main({
+            firstname: req.body.first_name,
+            lastname: req.body.last_name,
+            email: req.body.email,
+            phone: req.body.phone,
+            address: req.body.address,
+            city: req.body.city,
+            state: req.body.state,
+            zipcode: req.body.zip,
+            help_provided: req.body.help,
+            description: req.body.comment
         })
-        const contact_saved = await contacting.save();
+        const main_saved = await main_saving.save();
 
         res.send("ho gaya save londe");
 
@@ -64,34 +72,29 @@ app.get("/patient", (req, res) => {
 
 app.post("/patient", (req, res) => {
 
-    var filter_fname = req.body.firstname;
-    var filter_lname = req.body.lastname;
-    var filter_country = req.body.country;
+    var filter_city = req.body.city;
+    var filter_state = req.body.state;
+    var filter_help = req.body.help;
 
     // console.log(filter_fname); 
 
-    if (filter_fname != '' && filter_lname != '' && filter_country != '') {
+    if (filter_city != '') {
 
         var filterparameter = {
-            $and: [{ firstname: filter_fname },
-            { $and: [{ lastname: filter_lname }, { country: filter_country }] }
+            $and: [{ city: filter_city },
+            { $and: [{ state: filter_state }, { help_provided: filter_help }] }
             ]
         }
-    } else if (filter_fname != '' && filter_lname == '' && filter_country != '') {
-        var filterparameter = { $and: [{ firstname: filter_fname }, { country: filter_country }] }
+    } else if (filter_city == '') {
+        var filterparameter = { $and: [{ state: filter_state }, { help_provided: filter_help }] }
 
-    } else if (filter_fname == '' && filter_lname != '' && filter_country != '') {
-        var filterparameter = { $and: [{ lastname: filter_lname }, { country: filter_country }] }
-
-    } else if (filter_fname == '' && filter_lname == '' && filter_country != '') {
-        var filterparameter = { country: filter_country }
     } else {
         var filterparameter = {}
     }
     // console.log(filterparameter);
 
-    var contact_filter = contact.find(filterparameter);
-    contact_filter.exec((err, data) => {
+    var main_filter = main.find(filterparameter);
+    main_filter.exec((err, data) => {
         res.render("patients_page", {
             record: data
         })
@@ -115,11 +118,11 @@ app.post("/signin", async (req, res) => {
             res.send("put same password in both fields");
 
         } else {
-            const user_details= new user({
-                email :email,
-                password :password
+            const user_details = new user({
+                email: email,
+                password: password
             })
-            const user_saved= await user_details.save();
+            const user_saved = await user_details.save();
             // res.send("your details have been saved successfully");
             console.log("data has been saved sucessfully");
             res.redirect('/');
@@ -130,20 +133,20 @@ app.post("/signin", async (req, res) => {
     }
 })
 
-app.post("/login", async (req,res)=>{
+app.post("/login", async (req, res) => {
     try {
-        var email_page =req.body.email;
-        var password=req.body.password;
+        var email_page = req.body.email;
+        var password = req.body.password;
 
-        const useremail= await user.findOne({email:email_page});
+        const useremail = await user.findOne({ email: email_page });
         // console.log(useremail);
-        if(password===useremail.password){
+        if (password === useremail.password) {
             console.log("login successfull");
             res.redirect("/patient");
-        }else{
+        } else {
             res.send("invalid login details");
         }
-        
+
     } catch (error) {
         res.send("invalid login details");
     }
