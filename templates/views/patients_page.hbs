@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Patients portal</title>
     <link rel="stylesheet" href="css/head_style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,14 +19,14 @@
 <body>
     <header>
 		<div class="seco_nav"> 
-			<a  href="#" id="login_btn"><span id="write">Login <i class="fas fa-sign-in-alt"></i></span></a>
+			<a  href="http://localhost:3000" id="login_btn"><span id="write">Logout <i class="fas fa-sign-in-alt"></i></span></a>
 			{{!-- <a  href="#" id="login_btn"><span id="write">Sign Up </a> --}}
 		</div>
 		<nav class="navigation">
 
 			<!-- Logo -->
 			<div class="logo">
-				<h1>LOGO</h1>
+				<h1>SUVVYdha</h1>
 			</div>
 
 			<!-- Navigation -->
@@ -141,12 +141,28 @@
         </form>
         </div>
         <hr>
+        <div class="cards_cont">
+          {{#each record}}
+            <div class="card">
+              <div class="left">
+                <img id="leftimg" src='assets/{{this.help_provided}}.jpg' alt="img" style="object-fit: cover; height:300px; width:300px;">
+              </div>
+              <div class="right">
+              <span class="txt">Name:</span> {{this.firstname}} {{this.lastname}}<br>
+              <span class="txt">Help Provided :</span> {{this.help_provided}}<br>
+              <span class="txt">Description : </span>{{this.description}}<br>
+              <span class="txt">Address : </span>{{this.address}}<br>
+              <span class="txt">Phone: </span>{{this.phone}} <span class="txt">Email:</span>{{this.email}}
+              {{!-- <button class="book" data-bookmark="{{this._id}}">bookmark</button> --}}
+              </div>
+               
+            </div>
+          {{/each}}
+
+        </div>
         
-        {{#each record}}
-        <h1>{{this.firstname}}</h1>
-        {{/each}}
          <div class="bookmarks">
-             <h1>Add Your Bookmarks Here</h1>
+             {{!-- <h1>Add Your Bookmarks Here</h1> --}}
          </div>
         </div>
         {{!-- <div class="container"> --}}
@@ -220,6 +236,9 @@
               </div>
             </div>
         </footer>
-        
+        {{!-- <script>
+          const bookmark = document.querySelectorAll(".book")
+          
+        </script> --}}
 </body>
 </html>

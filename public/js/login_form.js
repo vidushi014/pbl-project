@@ -7,6 +7,15 @@ document.querySelector('#login_btn').addEventListener('click', () => {
     document.querySelector('.card_container').style.filter="blur(7px)";
 });
 
+document.querySelector('#patient_btn').addEventListener('click', () => {
+    document.querySelector('.wrapper').classList.add('active');
+    document.querySelector('footer').style.filter="blur(7px)";
+    document.querySelector('header').style.filter="blur(7px)";
+    document.querySelector('.portal').style.filter="blur(7px)";
+    document.querySelector('main').style.filter="blur(7px)";
+    document.querySelector('.card_container').style.filter="blur(7px)";
+});
+
 document.querySelector('.close_btn').addEventListener('click', () => {
     document.querySelector('.wrapper').classList.remove('active');
     document.querySelector('footer').style.filter="blur(0px)";

@@ -161,9 +161,9 @@
   }
 
   /*******************************************/
-  #card_2:hover .FAQ_ans{
+  /* #card_2:hover .FAQ_ans{
     transform: translate(0,-15rem);
-  }
+  } */
   #card_3:hover .FAQ_ans{
     transform: translate(0,-20rem);
   }

@@ -2,14 +2,13 @@ var express = require('express'); // Get the module
 var app = express(); // Create express by calling the prototype in var express
 require("./db/conn");
 const path = require("path");
+const jwt =require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
 const port = process.env.PORT || 3000;
 const hbs = require('hbs');
-// const contact = require('./models/contact');
-// var contact_find = contact.find({});
 const user = require('./models/user');
 const main = require('./models/main');
 const main_find = main.find({});
-// var user_find = user.find({});
 
 
 
@@ -23,17 +22,15 @@ app.use(express.static(static_path));
 app.set("view engine", "hbs");
 app.set("views", template_path);
 hbs.registerPartials(partials_path);
-
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 
-// app.get("/",(res,req)=>{
-//     res.send(index);
-// })
-
+app.get("/" ,(req,res) =>{
+    res.send("index")
+})
 app.get("/helper", (req, res) => {
-    res.render("helpers_page")
-    // res.send("hello madarchod")
+    res.render("index")
 })
 
 //for social service portal 
@@ -52,22 +49,31 @@ app.post("/helper", async (req, res) => {
             description: req.body.comment
         })
         const main_saved = await main_saving.save();
-
-        res.send("ho gaya save londe");
+        res.redirect("/");
+        // res.send("your data has been saved to the data base");
 
     } catch (error) {
+        console.log("error aa gaya be ");
         console.log(error);
     }
 })
 
+
 //for patients portal
 app.get("/patient", (req, res) => {
-    // user.exec((err,data)=>{
-    //     res.render("filter_page",{
-    //         record:data
-    //     })
-    // })
-    res.render("patients_page")
+    
+    const token= req.cookies.jwt;
+    jwt.verify(token, "yash" ,(err,user_verified)=>{
+        if(err){
+            res.send("you need to login first");
+        }
+        else{
+            console.log(user_verified);
+            res.render("patients_page");
+        }
+    })
+    // res.render("patients_page")
+    
 })
 
 app.post("/patient", (req, res) => {
@@ -91,7 +97,6 @@ app.post("/patient", (req, res) => {
     } else {
         var filterparameter = {}
     }
-    // console.log(filterparameter);
 
     var main_filter = main.find(filterparameter);
     main_filter.exec((err, data) => {
@@ -101,18 +106,12 @@ app.post("/patient", (req, res) => {
     })
 })
 
-//sign in functionality 
-
-// app.post("/login", (req, res) => {
-//     console.log("login waala req aa rha");
-// })
 
 app.post("/signin", async (req, res) => {
     try {
         var email = req.body.email;
         var password = req.body.pwd;
         var confirm_password = req.body.conf_pwd;
-        // console.log(`${name} ${password} ${confirm_password}`);
 
         if (confirm_password != password) {
             res.send("put same password in both fields");
@@ -124,8 +123,12 @@ app.post("/signin", async (req, res) => {
             })
             const user_saved = await user_details.save();
             // res.send("your details have been saved successfully");
-            console.log("data has been saved sucessfully");
-            res.redirect('/');
+            // const token = jwt.sign(user_d)
+            console.log(user_details._id);
+            const token = await jwt.sign({id:user_details._id}, "yash");
+            console.log(token);
+            res.cookie("jwt",token);
+            res.redirect('/patient');
         }
 
     } catch (error) {
@@ -143,6 +146,12 @@ app.post("/login", async (req, res) => {
         if (password === useremail.password) {
             console.log("login successfull");
             res.redirect("/patient");
+
+            const token = await jwt.sign({id:user_details._id}, "yash");
+            console.log(token);
+            res.cookie("jwt",token);
+            res.redirect('/patient');
+
         } else {
             res.send("invalid login details");
         }
@@ -151,6 +160,7 @@ app.post("/login", async (req, res) => {
         res.send("invalid login details");
     }
 })
+
 
 app.listen(port, () => {
     console.log("hemlooooo");
